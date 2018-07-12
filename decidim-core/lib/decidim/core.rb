@@ -50,6 +50,7 @@ module Decidim
   autoload :Events, "decidim/events"
   autoload :ViewHooks, "decidim/view_hooks"
   autoload :ContentBlockRegistry, "decidim/content_block_registry"
+  autoload :ContentBlock, "decidim/content_block"
   autoload :NewsletterEncryptor, "decidim/newsletter_encryptor"
   autoload :Searchable, "decidim/searchable"
   autoload :SearchResourceFieldsMapper, "decidim/search_resource_fields_mapper"

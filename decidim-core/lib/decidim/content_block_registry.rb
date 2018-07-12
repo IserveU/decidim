@@ -50,23 +50,14 @@ module Decidim
       block_exists = content_blocks.any? { |content_block| content_block.name == name }
       raise ContentBlockAlreadyRegistered, "There's a block already registered with the name #{name}, must be unique" if block_exists
 
-      content_block = ContentBlock.new(name)
+      content_block = ContentBlock.new(name: name)
       block.call(content_block)
+      content_block.validate!
       content_blocks.push(content_block)
     end
 
     def content_blocks
       @content_blocks ||= []
-    end
-
-    # Internal class to encapsulate each view registered on a view hook.
-    class ContentBlock
-      # name - a unique name identifying the content block
-      def initialize(name)
-        @name = name
-      end
-
-      attr_reader :name
     end
 
     class ContentBlockAlreadyRegistered < StandardError; end
